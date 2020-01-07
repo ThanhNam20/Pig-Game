@@ -1,14 +1,7 @@
 var scores, roundScore, activePlayer;
 
-scores = [0, 0];
-roundScore = 0;
-activePlayer = 0;
+init();
 // document.querySelector('#current-' + activePlayer ).textContent = dice; // doan #current- +activePlayer la kiem trs xem current nao duoc chon current-0 hay current-1 
-document.querySelector('.dice').style.display = "none";
-document.getElementById('score-0').textContent = '0';
-document.getElementById('score-1').textContent = '0';
-document.getElementById('current-0').textContent = '0';
-document.getElementById('current-1').textContent = '0';
 
 
 document.querySelector('.btn-roll').addEventListener('click', () => {
@@ -40,6 +33,7 @@ document.querySelector('.btn-hold').addEventListener('click', () => {
     scores[activePlayer] += roundScore;
     //Update the UI
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+   
     // Check if the player won the game
     if (scores[activePlayer] >= 10) {
         Swal.fire({
@@ -52,9 +46,7 @@ document.querySelector('.btn-hold').addEventListener('click', () => {
     } else {
         nextPlayer();
     }
-    //Next Player
-    nextPlayer();
-
+   
 })
 
 function nextPlayer() {
@@ -67,3 +59,19 @@ function nextPlayer() {
     document.querySelector('.player-1-panel').classList.toggle('active');
     document.querySelector('.dice').style.display = 'none';
 }
+
+function init() {
+    scores = [0, 0];
+    roundScore = 0;
+    activePlayer = 0;
+    document.querySelector('.dice').style.display = "none";
+    document.getElementById('score-0').textContent = '0';
+    document.getElementById('score-1').textContent = '0';
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
+
+}
+
+document.querySelector('.btn-new').addEventListener('click', ()=> {
+    init();
+})
