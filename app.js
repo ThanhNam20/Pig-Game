@@ -1,8 +1,7 @@
-var scores, roundScore, activePlayer;
+var scores, roundScore, activePlayer, gamePlaying;
 
 init();
 // document.querySelector('#current-' + activePlayer ).textContent = dice; // doan #current- +activePlayer la kiem trs xem current nao duoc chon current-0 hay current-1 
-
 
 document.querySelector('.btn-roll').addEventListener('click', () => {
     // random number
@@ -18,7 +17,6 @@ document.querySelector('.btn-roll').addEventListener('click', () => {
         document.querySelector('#current-' + activePlayer).textContent = roundScore;
     } else {
         //next player
-
         // if (activePlayer === 0) {
         //     activePlayer = 1;
         // } else {
@@ -43,6 +41,7 @@ document.querySelector('.btn-hold').addEventListener('click', () => {
             background: '#fff url(https://sweetalert2.github.io/images/trees.png)',
             backdrop: `rgba(0,0,123,0.4) url("https://sweetalert2.github.io/images/nyan-cat.gif")left top no-repeat`
         })
+        init();
     } else {
         nextPlayer();
     }
