@@ -70,7 +70,8 @@ body {
     margin-bottom: 130px;
 }
 
-.active { background-color: #f7f7f7; }
+.active { background-color: #f7f7f7;
+     transition: 1.2s}
 .active .player-name { font-weight: 300; }
 
 .active .player-name::after {

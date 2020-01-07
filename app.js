@@ -5,7 +5,6 @@ roundScore = 0;
 activePlayer = 0;
 // document.querySelector('#current-' + activePlayer ).textContent = dice; // doan #current- +activePlayer la kiem trs xem current nao duoc chon current-0 hay current-1 
 document.querySelector('.dice').style.display = "none";
-
 document.getElementById('score-0').textContent = '0';
 document.getElementById('score-1').textContent = '0';
 document.getElementById('current-0').textContent = '0';
@@ -32,14 +31,39 @@ document.querySelector('.btn-roll').addEventListener('click', () => {
         // } else {
         //     activePlayer = 0;
         // }       
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
-        // cau truc rut gon cua if else
-        roundScore = 0;
-        document.querySelector('#current-0').textContent = '0';
-        document.querySelector('#current-1').textContent = '0';
-        document.querySelector('.player-0-panel').classList.toggle('active');
-        document.querySelector('.player-1-panel').classList.toggle('active');
-        document.querySelector('.dice').style.display = 'none'; 
+        nextPlayer();
     }
+});
+
+document.querySelector('.btn-hold').addEventListener('click', () => {
+    //Adding current score to Global score
+    scores[activePlayer] += roundScore;
+    //Update the UI
+    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+    // Check if the player won the game
+    if (scores[activePlayer] >= 10) {
+        Swal.fire({
+            title: 'YOU WIN!',
+            width: 600,
+            padding: '3em',
+            background: '#fff url(https://sweetalert2.github.io/images/trees.png)',
+            backdrop: `rgba(0,0,123,0.4) url("https://sweetalert2.github.io/images/nyan-cat.gif")left top no-repeat`
+        })
+    } else {
+        nextPlayer();
+    }
+    //Next Player
+    nextPlayer();
+
 })
 
+function nextPlayer() {
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    // cau truc rut gon cua if else
+    roundScore = 0;
+    document.querySelector('#current-0').textContent = '0';
+    document.querySelector('#current-1').textContent = '0';
+    document.querySelector('.player-0-panel').classList.toggle('active');
+    document.querySelector('.player-1-panel').classList.toggle('active');
+    document.querySelector('.dice').style.display = 'none';
+}
