@@ -21,7 +21,8 @@ document.querySelector('.btn-roll').addEventListener('click', () => {
         //     activePlayer = 1;
         // } else {
         //     activePlayer = 0;
-        // }       
+        // }
+        document.querySelector('#score-' + activePlayer).textContent = "0";
         nextPlayer();
     }
 });
@@ -32,8 +33,17 @@ document.querySelector('.btn-hold').addEventListener('click', () => {
     //Update the UI
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
    
+    var input = document.querySelector('.final-score').value;
+    var winningScore
+    // undefine 0 null..... is no eccept
+    if (input) {
+        winningScore = input;
+    } else {
+        winningScore = 100;
+    }
+
     // Check if the player won the game
-    if (scores[activePlayer] >= 10) {
+    if (scores[activePlayer] >= winningScore) {
         Swal.fire({
             title: 'YOU WIN!',
             width: 600,
@@ -43,6 +53,7 @@ document.querySelector('.btn-hold').addEventListener('click', () => {
         })
         init();
     } else {
+        
         nextPlayer();
     }
    

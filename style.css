@@ -56,7 +56,7 @@ body {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-weight: 100;
+    font-weight: 300;
     margin-top: 20px;
     margin-bottom: 10px;
     position: relative;
@@ -65,16 +65,16 @@ body {
 .player-score {
     text-align: center;
     font-size: 80px;
-    font-weight: 100;
+    font-weight: 400;
     color: #EB4D4D;
     margin-bottom: 130px;
 }
 
-.active { background-color: #f7f7f7;
-     transition: 1.2s}
+.active { background-color: #d8c3c3;
+    }
 .active .player-name { font-weight: 300; }
 
-.active .player-name::after {
+.active .player-name::after {   
     content: "\2022";
     font-size: 47px;
     position: absolute;
@@ -145,12 +145,35 @@ i {
 .dice {
     position: absolute;
     left: 50%;
-    top: 178px;
+    top: 102px;
+    transform: translateX(-50%);
+    height: 100px;
+    box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
+}
+.dice1 {
+    position: absolute;
+    left: 50%;
+    top: 240px;
     transform: translateX(-50%);
     height: 100px;
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
 }
 
+
 .winner { background-color: #f7f7f7; }
 .winner .player-name { font-weight: 300; color: #EB4D4D; }
 
+.final-score {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 520px;
+    color: #555;
+    font-size: 18px;
+    font-family: 'Lato';
+    text-align:center;
+    padding: 10px;
+    width: 160px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
