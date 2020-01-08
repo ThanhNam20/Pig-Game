@@ -1,7 +1,9 @@
 var scores, roundScore, activePlayer, gamePlaying;
 
-init();
+ init();
 // document.querySelector('#current-' + activePlayer ).textContent = dice; // doan #current- +activePlayer la kiem trs xem current nao duoc chon current-0 hay current-1 
+setTimeout(updateName, 1000);
+
 
 document.querySelector('.btn-roll').addEventListener('click', () => {
     // random number
@@ -53,10 +55,8 @@ document.querySelector('.btn-hold').addEventListener('click', () => {
         })
         init();
     } else {
-        
         nextPlayer();
     }
-   
 })
 
 function nextPlayer() {
@@ -70,7 +70,7 @@ function nextPlayer() {
     document.querySelector('.dice').style.display = 'none';
 }
 
-function init() {
+ function init() {
     scores = [0, 0];
     roundScore = 0;
     activePlayer = 0;
@@ -85,3 +85,22 @@ function init() {
 document.querySelector('.btn-new').addEventListener('click', ()=> {
     init();
 })
+
+ async function updateName() {
+    const { value: text } = await Swal.fire({
+        title: 'Enter your name',
+        input: 'text',
+        inputPlaceholder: 'Enter your name',
+        inputAttributes: {
+            maxlength: 20,
+            autocapitalize: 'off',
+            autocorrect: 'off'
+        }
+    })
+    if (text) {
+        document.querySelector('#name-0').textContent = text;
+    } else {
+        document.querySelector('#name-0').textContent = 'Stranger';
+    }
+
+}
